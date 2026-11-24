@@ -1,1 +1,239 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --cream: #fff9f0;
+  --paper: #ffffff;
+  --brown: #503b35;
+  --muted: #9a8177;
+  --red: #d66c70;
+  --soft: #f7e9e1;
+  --border: #f0ded4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 10%, #f9e9df 0, transparent 30%),
+    radial-gradient(circle at 90% 90%, #f8e9e0 0, transparent 30%),
+    var(--cream);
+  color: var(--brown);
+  font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+.screen {
+  width: 100%;
+  max-width: 490px;
+  text-align: center;
+  animation: appear .5s ease both;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.eyebrow {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+h1, h2 {
+  font-family: 'Comfortaa', sans-serif;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(27px, 7vw, 38px);
+}
+
+h2 {
+  font-size: 26px;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.heart {
+  font-size: 55px;
+  margin-bottom: 15px;
+  animation: heartbeat 1.6s infinite;
+}
+
+.card {
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 36px 25px;
+  box-shadow: 0 15px 50px rgba(91,58,45,.07);
+}
+
+.primary {
+  background: var(--brown);
+  color: white;
+  padding: 16px 27px;
+  border-radius: 50px;
+  font-weight: 800;
+  transition: .2s;
+  box-shadow: 0 7px 18px rgba(80,59,53,.15);
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  background: #72534a;
+}
+
+.secondary {
+  background: var(--soft);
+  color: var(--brown);
+  padding: 15px 23px;
+  border-radius: 50px;
+  font-weight: 700;
+}
+
+.button-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  min-height: 65px;
+  margin-top: 28px;
+}
+
+.runaway {
+  position: relative;
+  z-index: 2;
+}
+
+.choices {
+  display: grid;
+  gap: 11px;
+  margin-top: 25px;
+}
+
+.choice {
+  background: white;
+  color: var(--brown);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 17px 14px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.choice:hover {
+  background: var(--soft);
+  border-color: var(--red);
+  transform: translateY(-2px);
+}
+
+.choice.selected {
+  background: var(--soft);
+  border: 2px solid var(--red);
+}
+
+.step {
+  font-size: 11px;
+  color: var(--red);
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.back {
+  margin-top: 20px;
+  background: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.kiss {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  font-size: 35px;
+  animation: kissFly 1.2s ease-out forwards;
+}
+
+.final-heart {
+  font-size: 65px;
+  animation: heartbeat 1.5s infinite;
+}
+
+.progress {
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  background: var(--soft);
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--red);
+  border-radius: 10px;
+  transition: width .4s;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.13); }
+}
+
+@keyframes kissFly {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(.5) rotate(-15deg);
+  }
+  20% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translateY(-130px) translateX(35px) scale(1.5) rotate(20deg);
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    padding: 30px 19px;
+  }
+  h1 {
+    font-size: 27px;
+  }
+}
+
