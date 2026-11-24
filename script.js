@@ -9,10 +9,9 @@ let answers = {
 
 const options = {
   place: [
-    '🍽️ Уютный ресторан',
-    '☕ Прогулка и вкусняшки',
-    '🎬 Кино и что-нибудь вкусное',
-    '🌙 Романтический вечер'
+    '🍽️ Поужинаем?',
+    '☕ Прогулка и земля',
+    '🎬 СЕРДЦЕ ЗВЕРЯ например.',
   ],
   time: [
     '14:00',
@@ -91,16 +90,16 @@ function showCover() {
           animation:heartbeat 2s infinite;
         ">💌</div>
 
-        <h1>Для одной особенной девочки</h1>
+        <h1> Моей девочке</h1>
 
         <p>
-          Кэсся, тебе пришло кое-что.
+          Смотри тут что-то есть
           <br>
           Отправитель подозрительно знаком.
         </p>
 
         <button class="primary" id="openLetter">
-          Открыть письмо 💗
+          Тык💗
         </button>
 
         <p style="font-size:11px;margin-top:20px">
@@ -132,25 +131,24 @@ function showQuest() {
 
         <div class="heart">🕵️‍♀️</div>
 
-        <h1>Так-так, Кэсся...</h1>
+        <h1>Такс..такс...</h1>
 
         <p>
-          Ты обнаружила секретное приглашение.
-          Но получить его будет не так просто.
+          Чё-то тут понатыкали надо разобраться..
         </p>
 
         <h2 style="font-size:18px">
-          Поймай кнопку и получи своё письмо!
+          ХМ...
         </h2>
 
         <div class="button-area" id="questArea">
           <button class="primary runaway" id="questButton">
-            Лови меня 💗
+           Тык💗
           </button>
         </div>
 
         <p id="questHint" style="font-size:11px">
-          Она немного неуловимая...
+          НОНОНО Кэсся!
         </p>
 
       </div>
@@ -176,17 +174,16 @@ function showQuest() {
     btn.style.top = (Math.random() * maxY - 20) + 'px';
 
     const messages = [
-      'Ха! Почти поймала!',
-      'Мимо! 😈',
-      'Не так быстро!',
-      'Ладно, ты настойчивая...'
+      'Почти..',
+      'Косая! 😈',
+      'ты настойчивая...'
     ];
 
     hint.textContent = messages[attempts - 1];
 
     if (attempts === 4) {
       btn.textContent = 'Ну ладно, забирай 😭';
-      hint.textContent = 'Я сдаюсь. Ты победила!';
+      hint.textContent = 'сдаюсь.';
       btn.style.position = 'relative';
       btn.style.left = 'auto';
       btn.style.top = 'auto';
@@ -220,18 +217,12 @@ function showInvitation() {
 
         <div class="heart">🥹</div>
 
-        <h1>Кэсся, пойдёшь со мной на свидание?</h1>
-
-        <p>
-          Есть одно предложение,
-          от которого я очень надеюсь
-          ты не захочешь отказываться.
-        </p>
+        <h1>Пойдём познакомимся?</h1>
 
         <div class="button-area" id="answerArea">
 
           <button class="primary" id="yes">
-            Конечно! 💗
+            Конечно обсид!!! 💗
           </button>
 
           <button class="secondary" id="no">
@@ -241,7 +232,7 @@ function showInvitation() {
         </div>
 
         <p style="font-size:11px">
-          Выбор, конечно, за тобой. Но кнопка «Нет» сомневается.
+          Выбор, конечно, за тобой. Но кнопка «Нет» отсутствует.
         </p>
 
       </div>
@@ -285,9 +276,9 @@ function showChoice(type) {
   };
 
   const subtitles = {
-    place: 'Выбирай место нашего маленького приключения.',
-    time: 'Подбираем идеальное время.',
-    date: 'Последний штрих, Кэсся.'
+    place: 'Ты можешь выбрать место',
+    time: 'И время',
+    date: 'и дату кстати тоже'
   };
 
   const progress = {
@@ -373,13 +364,12 @@ function showFinal(selfChoice) {
   if (selfChoice) {
 
     details = `
-      <p>Я тебя понял, Кэсся. 🐾</p>
+      <p>Я тебя понял🐾</p>
 
-      <h2>Тогда место, время и дата теперь мои!</h2>
+      <h2>Тогда 26.11.2026, 20:00, только ты,я, и земля</h2>
 
       <p>
-        Организацию беру на себя.
-        Тебе остаётся только красиво появиться.
+        По маньячески? знаю, тебе нравится
       </p>
     `;
 
@@ -392,7 +382,7 @@ function showFinal(selfChoice) {
       <p>🕒 ${answers.time}</p>
       <p>📅 ${answers.date}</p>
 
-      <p>Теперь осталось дождаться встречи.</p>
+      <p>Ура, осталось доехать!</p>
     `;
 
   }
@@ -403,19 +393,19 @@ function showFinal(selfChoice) {
 
         <div class="final-heart">💗</div>
 
-        <div class="eyebrow">Приглашение оформлено</div>
+        <div class="eyebrow">Оформлено</div>
 
-        <h1>Ну всё, Кэсся!</h1>
+        <h1>Попала,девочка</h1>
 
         ${details}
 
         <h2 style="font-size:19px;margin-top:25px">
-          Твой Обсиди 💋
+          💋
         </h2>
 
         <button class="primary" id="finish"
           style="margin-top:20px">
-          Забрать приглашение 💌
+          Забрать  💌
         </button>
 
       </div>
@@ -435,18 +425,7 @@ function showFinal(selfChoice) {
 
           <div class="final-heart">💋</div>
 
-          <h1>До встречи, Кэсся!</h1>
-
-          <p>
-            Одно свидание.
-            Два человека.
-            <br>
-            И куча поводов улыбаться.
-          </p>
-
-          <p style="margin-top:25px">
-            P.S. Буськи при встрече обязательны.
-          </p>
+          <h1>До встречи, моя любовь!</h1>
 
         </div>
       </section>
