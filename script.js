@@ -9,11 +9,27 @@ let answers = {
 
 let currentStep = 0;
 
-const proposals = {
-  place: 'Тогда место я выберу сам. Обещаю, тебе понравится.',
-  time: 'Тогда время выбираю я. Тебе останется только подготовиться.',
-  date: 'Тогда дату тоже выбираю я. Всё беру на себя.'
-};
+// Отправка уведомлений в Telegram
+async function notify(event) {
+  try {
+    const response = await fetch('/api/notify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        event,
+        answers: { ...answers }
+      })
+    });
+
+    if (!response.ok) {
+      console.error('Telegram notification failed:', await response.text());
+    }
+  } catch (error) {
+    console.error('Notification error:', error);
+  }
+}
 
 const options = {
   place: [
@@ -47,7 +63,9 @@ function kiss() {
   el.textContent = '💋';
   el.style.left = (20 + Math.random() * 60) + 'vw';
   el.style.top = (45 + Math.random() * 25) + 'vh';
+
   document.body.appendChild(el);
+
   setTimeout(() => el.remove(), 1300);
 }
 
@@ -101,6 +119,7 @@ function showQuest() {
   });
 
   btn.addEventListener('click', () => {
+    notify('quest');
     kisses();
     setTimeout(showInvitation, 500);
   });
@@ -138,6 +157,7 @@ function showInvitation() {
   no.addEventListener('click', escapeNo);
 
   document.getElementById('yes').addEventListener('click', () => {
+    notify('consent');
     kisses();
     setTimeout(() => showChoice('place'), 450);
   });
@@ -192,6 +212,9 @@ function showChoice(type) {
   document.querySelectorAll('.choice[data-index]').forEach(btn => {
     btn.addEventListener('click', () => {
       answers[type] = options[type][Number(btn.dataset.index)];
+
+      notify(type);
+
       kisses();
 
       setTimeout(() => {
@@ -204,7 +227,11 @@ function showChoice(type) {
 
   document.getElementById('selfChoice').addEventListener('click', () => {
     answers[type] = 'Решай сам, у меня лапки 🐾';
+
+    notify('self');
+
     kisses();
+
     setTimeout(() => showFinal(true), 450);
   });
 }
@@ -247,9 +274,12 @@ function showFinal(selfChoice) {
     </section>
   `);
 
+  notify('finish');
   kisses();
+
   document.getElementById('finish').addEventListener('click', () => {
     kisses();
+
     render(`
       <section class="screen">
         <div class="card">
@@ -265,4 +295,3 @@ function showFinal(selfChoice) {
 
 // ЗАПУСК
 showQuest();
-
