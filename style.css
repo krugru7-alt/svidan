@@ -307,3 +307,86 @@ p {
     transition-duration: .01ms !important;
   }
 }
+
+/* ФИНАЛЬНАЯ ОТКРЫТКА */
+
+.final-card {
+  position: relative;
+  padding: 42px 25px;
+  background: linear-gradient(145deg, #fffefa, #fff4ed);
+  border: 1px solid #ead5c9;
+  border-radius: 30px;
+  box-shadow: 0 20px 65px rgba(80,59,53,.12);
+  overflow: hidden;
+}
+
+.final-card::before {
+  content: "♡";
+  position: absolute;
+  font-size: 170px;
+  color: rgba(201,109,114,.06);
+  right: -30px;
+  bottom: -65px;
+  transform: rotate(-20deg);
+}
+
+.approval-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 116px;
+  height: 116px;
+  margin: 15px auto 25px;
+  border: 3px double var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+  transform: rotate(-12deg) scale(0);
+  animation: stampAppear .7s .35s cubic-bezier(.2,1.5,.5,1) forwards;
+}
+
+.final-divider {
+  width: 65px;
+  height: 2px;
+  background: var(--border);
+  margin: 23px auto;
+}
+
+.final-detail {
+  position: relative;
+  padding: 14px;
+  margin: 9px 0;
+  border-radius: 15px;
+  background: rgba(255,255,255,.75);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.confetti-heart {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  animation: confettiFall 2.8s ease-in forwards;
+}
+
+@keyframes stampAppear {
+  0% { transform: rotate(-35deg) scale(0); }
+  70% { transform: rotate(-8deg) scale(1.15); }
+  100% { transform: rotate(-12deg) scale(1); }
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) rotate(0);
+  }
+  15% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
